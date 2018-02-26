@@ -8,6 +8,8 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     inject: 'body'
 });
 
+const LostGridPlugin = require( 'lost' );
+
 module.exports = {
     entry: {
         'home': './app/index.js'
@@ -24,8 +26,19 @@ module.exports = {
                 query: {
                     presets: [ 'es2015', 'react' ]
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    { loader: 'css-loader', options: { importLoaders: 1 } },
+                    'postcss-loader'
+                ]
             }
         ]
     },
-    plugins: [HtmlWebpackPluginConfig]
+    plugins: [
+        HtmlWebpackPluginConfig,
+        LostGridPlugin
+    ]
 }
