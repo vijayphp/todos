@@ -40,5 +40,9 @@ module.exports = {
     plugins: [
         HtmlWebpackPluginConfig,
         LostGridPlugin
-    ]
+    ],
+    devServer: {
+        host: 'localhost',
+        port: 3001
+      }
 }
